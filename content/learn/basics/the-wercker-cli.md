@@ -17,27 +17,38 @@ depending on your distribution and package manager. See Docker's
 [installation
 instructions](https://docs.docker.com/installation/#installation) fore more information.
 
-If you are running Mac OSX you can install Docker using an installer
-called [boot2docker](https://docs.docker.com/installation/mac/) that
-will install [VirtualBox](https://www.virtualbox.org/) and a minimal
-Docker environment. As an alternative, you can use
+If you are running Mac OSX you can install Docker using the [Docker Toolbox](https://www.docker.com/docker-toolbox) that
+will install Docker Client, Machine, Compose, Kitematic and VirtualBox. As an alternative, you can use
 [Vagrant](http://vagrantup.com) to install a separate boot2docker
 virtual machine using [this vagrant box](https://github.com/mitchellh/boot2docker-vagrant-box).
 
 ### OSX boot2docker quick start
 
-If you're eager to get up to speed on OSX, below is a quickstart that
-installs boot2docker via the [Homebrew package
-manager](http://brew.sh/).
+If you're eager to get up to speed on OSX, install [Docker Toolbox](https://www.docker.com/docker-toolbox)to quickly and easily install and setup a Docker environment on your computer. Toolbox installs the Docker Client, Docker Machine, Docker Compose, Docker Kitematic and VirtualBox. Once Docker Toolbox has finished installing, use `docker-machine` to create a virtual machine that can run Docker.
 
 ```no-highlight
-brew install boot2docker
-
-boot2docker init
-boot2docker up
-
-$(boot2docker shellinit)
+$ docker-machine create --driver virtualbox dev
 ```
+
+Next, get the environment commands for your new VM.
+
+```no-highlight 
+$ docker-machine env dev
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.101:2376"
+export DOCKER_CERT_PATH="/Users/mary/.docker/machine/machines/dev"
+export DOCKER_MACHINE_NAME="dev"
+# Run this command to configure your shell:
+# eval "$(docker-machine env dev)
+```
+
+Finally, connect your shell to the machine.
+
+```no-highlight
+eval "$(docker-machine env dev)"
+```
+
+Note that this will only activate Docker in the current shell session. It is recommended that you put the three `exports` above in your `.profile`.
 
 ### Getting the CLI
 
