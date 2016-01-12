@@ -17,7 +17,7 @@ depending on your distribution and package manager. See Docker's
 [installation
 instructions](https://docs.docker.com/installation/#installation) fore more information.
 
-If you are running Mac OSX you can install Docker using the [Docker Toolbox](https://www.docker.com/docker-toolbox) that
+If you are running Mac OSX, you can install Docker using the [Docker Toolbox](https://www.docker.com/docker-toolbox) which
 will install Docker Client, Machine, Compose, Kitematic and VirtualBox. As an alternative, you can use
 [Vagrant](http://vagrantup.com) to install a separate boot2docker
 virtual machine using [this vagrant box](https://github.com/mitchellh/boot2docker-vagrant-box).
@@ -45,7 +45,7 @@ export DOCKER_MACHINE_NAME="dev"
 Finally, connect your shell to the machine.
 
 ```no-highlight
-eval "$(docker-machine env dev)"
+$ eval "$(docker-machine env dev)"
 ```
 
 Note that this will only activate Docker in the current shell session. It is recommended that you put the three `exports` above in your `.profile`.
